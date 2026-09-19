@@ -8,9 +8,9 @@ module DUT (
   input  I1,
   input  S,
   output Y
-  
-);
 
+);
+ 
   // ---- Option 1: dataflow version ----
   // mux_df U1 (
   //   .I0 (I0),
