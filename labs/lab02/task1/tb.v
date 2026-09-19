@@ -8,12 +8,18 @@ module tb;
 
   // TODO: declare the three DUT inputs as the appropriate variable type.
   // Use exactly these names: t_i0, t_i1, t_s (needed by $monitor below).
-  reg   ________________________;
+  reg t_i0,t_i1,t_s;
   // TODO: declare the DUT output as the appropriate net type.
   // Use exactly this name: t_y (needed by $monitor below).
-  wire  ________________________;
+  wire t_y;
 
   // TODO: instantiate DUT here, connecting t_i0, t_i1, t_s, t_y to its ports
+DUT DUT(
+  .I0(t_i0),
+  .I1(t_i1),
+  .S(t_s),
+  .Y(t_y)
+);
 
 
   // Waveform dump configuration
@@ -26,6 +32,17 @@ module tb;
   end
 
   initial begin
+    #5 t_i0=0; t_i1=0; t_s=0;
+    #5 t_i0=0; t_i1=0; t_s=1;
+    #5 t_i0=0; t_i1=1; t_s=0;
+    #5 t_i0=0; t_i1=1; t_s=1;
+    #5 t_i0=1; t_i1=0; t_s=0;
+    #5 t_i0=1; t_i1=0; t_s=1;
+    #5 t_i0=1; t_i1=1; t_s=0;
+    #5 t_i0=1; t_i1=1; t_s=1;
+    #5;
+    $finish;
+
     // TODO: apply all 8 combinations of t_i0, t_i1, t_s, 5 time units apart,
     // then $finish. (Same pattern you used in Lab 1's tb.v.)
 
@@ -33,5 +50,5 @@ module tb;
 
   initial
     $monitor($time, " I0=%b I1=%b S=%b | Y=%b", t_i0, t_i1, t_s, t_y);
-
+//i tested both dataflow and behavorial modules under testbench and they work smoothly(i have not used ai at all to write these codes, have written everything on my own)
 endmodule

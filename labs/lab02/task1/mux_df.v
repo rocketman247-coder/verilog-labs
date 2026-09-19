@@ -6,10 +6,10 @@
 // a variable in dataflow modeling.
 
 module mux_df (
-  input      I0,
-  input      I1,
-  input      S,
-  output reg Y
+  input wire I0,
+  input wire I1,
+  input wire S,
+  output wire Y//dataflow modelling requires its output to be a wire because it uses assign keyword.
 );
 
   assign Y = S ? I1 : I0;
